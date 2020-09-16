@@ -12,10 +12,9 @@ console.log(sum);
 //using first 2 args
 allNumbers.forEach( (num, index) => {
     allNumbers[index] = 2*num;
-} )
-allNumbers.forEach( (num, index) => {
-    console.log(allNumbers[index]);
- } )
+} );
+console.log(allNumbers);
+ 
 
  //using 3 args for fn
 allNumbers.forEach( (num, index, arr1) => {
