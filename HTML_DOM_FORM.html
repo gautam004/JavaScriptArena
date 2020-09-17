@@ -1,0 +1,72 @@
+<html>
+  <body>
+    <h1 align="center">
+       Student Records
+    </h1>
+    <button onclick=display()>Display Current Students</button>
+    <div id="Cards"></div>
+
+
+ 
+    <script>
+      //JS begins here
+      let students = [{
+    name: "Gautam",
+    classs: "1st",
+    rollno: 1
+  },
+  {
+    name: "Ankit",
+    classs: "1st",
+    rollno: 2
+  },
+  {
+    name: "Aditya",
+    classs: "1st",
+    rollno: 3
+  },
+  {
+    name: "Aviral",
+    classs: "1st",
+    rollno: 4
+  },
+  {
+    name: "Ajay",
+    classs: "1st",
+    rollno: 5
+  }
+  ];
+
+let arr =new Array();
+let btnarr = new Array();
+
+function deletes(indexed){
+      students[indexed]="deleted";
+      display();}
+
+function display() {
+  students.forEach((val, index) => {
+    
+    if(students[index] == "deleted"){index=index+1;}
+    else{
+    let name1 = students[index].name;
+    let class1 = students[index].classs;
+    let rollno1 = students[index].rollno;
+
+    arr[index] = document.createElement("P");
+
+    arr[index].innerHTML = "Name: " + name1 + " studies in class: " + class1 + " whose roll-no is " + rollno1;
+
+    document.getElementById("Cards").appendChild(arr[index]);
+
+    btnarr[index] = document.createElement("button");
+    btnarr[index].innerHTML = "Delete";
+    btnarr[index].addEventListener("click",deletes(index));
+    document.getElementById("Cards").appendChild(btnarr[index]);
+    }
+  });
+}
+
+    </script>
+  </body>
+</html>
