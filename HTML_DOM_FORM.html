@@ -1,14 +1,13 @@
 <html>
-  <body>
+  <body >
     <h1 align="center">
        Student Records
     </h1>
-    <button onclick=display()>Display Current Students</button>
-    <div id="Cards"></div>
+    <button id="Button1" onclick=display()>Display Current Students</button>
+    <h3>Click on records to delete them</h3>
+    
 
-
- 
-    <script>
+<script>
       //JS begins here
       let students = [{
     name: "Gautam",
@@ -38,35 +37,31 @@
   ];
 
 let arr =new Array();
-let btnarr = new Array();
-
-function deletes(indexed){
-      students[indexed]="deleted";
-      display();}
+let divarr = new Array();
 
 function display() {
+  document.getElementById("Button1").disabled = true;
   students.forEach((val, index) => {
     
-    if(students[index] == "deleted"){index=index+1;}
-    else{
     let name1 = students[index].name;
     let class1 = students[index].classs;
     let rollno1 = students[index].rollno;
 
+    let divname = "div"+index;
+    var x = document.createElement("div");
+    x.setAttribute("id", "divname" );
+    x.addEventListener("click", () => {x.style.display="none";});
     arr[index] = document.createElement("P");
 
     arr[index].innerHTML = "Name: " + name1 + " studies in class: " + class1 + " whose roll-no is " + rollno1;
 
-    document.getElementById("Cards").appendChild(arr[index]);
+    x.appendChild(arr[index]);
 
-    btnarr[index] = document.createElement("button");
-    btnarr[index].innerHTML = "Delete";
-    btnarr[index].addEventListener("click",deletes(index));
-    document.getElementById("Cards").appendChild(btnarr[index]);
-    }
+   document.body.appendChild(x);
+   
   });
 }
-
+  
     </script>
   </body>
 </html>
